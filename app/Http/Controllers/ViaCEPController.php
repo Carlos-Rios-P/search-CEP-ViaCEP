@@ -6,8 +6,13 @@ namespace App\Http\Controllers;
 class ViaCEPController extends Controller
 {
     //
-    public function consultarCEP($ceps)
+    public function consultarCEP($ceps = null)
     {
+        if($ceps == null)
+        {
+            return response()->json(['erro' => 'Informe um CEP'], 500);
+        }
+
         try {
             $ceps = explode(',', $ceps);
 
